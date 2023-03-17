@@ -1,7 +1,10 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { defineComponents, IgcCalendarComponent } from 'igniteui-webcomponents';
 import '@infragistics/igniteui-webcomponents-grids/grids/combined.js';
 import NorthwindService from '../service/Northwind-service';
+
+defineComponents(IgcCalendarComponent);
 
 @customElement('app-master-view')
 export default class MasterView extends LitElement {
@@ -16,6 +19,12 @@ export default class MasterView extends LitElement {
     .grid {
       min-width: 600px;
       min-height: 300px;
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+    .calendar {
+      width: max-content;
+      height: max-content;
       flex-grow: 1;
       flex-basis: 0;
     }
@@ -55,6 +64,7 @@ export default class MasterView extends LitElement {
         <igc-column field="notes" data-type="string" header="notes" sortable="true" selectable="false"></igc-column>
         <igc-column field="avatarUrl" data-type="string" header="avatarUrl" sortable="true" selectable="false"></igc-column>
       </igc-grid>
+      <igc-calendar ?hide-header="${false}" header-orientation="horizontal" class="calendar"></igc-calendar>
     `;
   }
 }
